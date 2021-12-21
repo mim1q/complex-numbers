@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 2em;
+
+  font-size: 24px;
+
+  background-color: #111111;
+  color: white;
+}
+
+main {
+  width: 800px;
+  height: 800px;
+
+text-align: center;
+}
+
+input, select {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  font-size: 24px;
+}
