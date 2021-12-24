@@ -13,11 +13,16 @@ class ComplexNumber {
 
   multiply(operand) {
     if(operand instanceof ComplexNumber) {
-      let r = 0;
-      let i = 0;
+      let swap = true;
 
-      let result = new ComplexNumber(i, r);
-      return result;
+      if(this.imaginary == 0 || operand.imaginary == 0) {
+        swap = false;
+      }
+
+      let i = this.real * operand.imaginary + this.imaginary * operand.real;
+      let r = this.real * operand.real - this.imaginary * operand.imaginary;
+
+      return new ComplexNumber(i, r);
     }
   }
 
@@ -25,7 +30,7 @@ class ComplexNumber {
     let i = this.imaginary;
     let r = this.real;
 
-    let result = '';
+    let result = '(';
 
     if(i == 0) {
       result += r;
@@ -45,6 +50,6 @@ class ComplexNumber {
     else if(r < 0)
       result += ' - ' + (-r)
 
-    return result;
+    return result + ')';
   }
 }
