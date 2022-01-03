@@ -1,9 +1,5 @@
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding-top: 2em;
+  padding: 2em;
 
   font-size: 24px;
 
@@ -11,12 +7,6 @@ body {
   color: white;
 }
 
-main {
-  width: 800px;
-  height: 800px;
-
-text-align: center;
-}
 
 input, select {
   background-color: black;
