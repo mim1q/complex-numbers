@@ -4,9 +4,49 @@ class ComplexNumber {
     this.imaginary = imaginary;
   }
 
+  static fromString(str) {
+    const regexSingle = /^\-?(\d+((\.\d+)?i?)|i)$/                    // Tests for a number, optionally proceded by an 'i'
+    const regexComplex = /^\-?\d+(\.\d+)?[+-](\d+(\.\d+)?)?i$/        // Tests for a complex number with the real part first
+    const regexComplexSwap = /^\-?(\d+(\.\d+)?)?i[+-]\d+(\.\d+)?$/    // Tests for a complex number with the imaginary part first
+
+    str = str.replaceAll(' ', '');
+
+    let single = regexSingle.test(str);
+    let complex = regexComplex.test(str);
+    let complexSwap = regexComplexSwap.test(str);
+
+    let r = 0;
+    let i = 0;
+
+    if(single) {
+      if(str.includes('i')) {
+        if(str == 'i' || str == '-i') i = str.replace('i', '1');
+        else i = str.replace('i', '');
+      }
+      else r = str;
+    } 
+    else if(complex || complexSwap) {
+      let parts = [];
+      let minus = str.substring(1).indexOf('-') + 1;
+      let plus = str.indexOf('+');
+
+      parts[0] = str.substring(0, minus <= 0 ? plus : minus);
+      parts[1] = str.substring(minus <= 0 ? plus : minus);
+
+      i = complexSwap ? parts[0] : parts[1];
+      r = complexSwap ? parts[1] : parts[0];
+
+      console.log(parts);
+
+      if(/^[+-]?i$/.test(i)) i = i.replace('i', '1');
+    }
+
+    return new ComplexNumber(parseFloat(r), parseFloat(i));
+  }
+
   add(operand) {
     return new ComplexNumber(this.real + operand.real, this.imaginary + operand.imaginary);
-  }
+  } 
 
   multiply(operand) {
     let r = this.real * operand.real - this.imaginary * operand.imaginary;
