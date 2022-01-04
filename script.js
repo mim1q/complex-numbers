@@ -1,6 +1,9 @@
-let a = new ComplexNumber(1, -5);
-let b = new ComplexNumber(-73, -33);
+function calculate() {
+    let leftStr = document.getElementById('operand_left').value;
+    let rightStr = document.getElementById('operand_right').value;
 
-let c = a.multiply(b);
+    let left = ComplexNumber.fromString(leftStr);
+    let right = ComplexNumber.fromString(rightStr);
 
-console.log(a.toString() + ' * ' + b.toString() + ' = ' + c.toString());
+    document.getElementById('result').innerText = left.add(right).toString();
+}
