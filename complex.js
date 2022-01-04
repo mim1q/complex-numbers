@@ -46,13 +46,25 @@ class ComplexNumber {
 
   add(operand) {
     return new ComplexNumber(this.real + operand.real, this.imaginary + operand.imaginary);
-  } 
+  }
+
+  subtract(operand) {
+    return new ComplexNumber(this.real - operand.real, this.imaginary - operand.imaginary);
+  }
 
   multiply(operand) {
     let r = this.real * operand.real - this.imaginary * operand.imaginary;
     let i = this.real * operand.imaginary + this.imaginary * operand.real;
 
     return new ComplexNumber(r, i);
+  }
+
+  divide(operand) {
+    let rNum = this.real * operand.real + this.imaginary * operand.imaginary;
+    let iNum = this.imaginary * operand.real - this.real * operand.imaginary;
+    let den = operand.real ** 2 + operand.imaginary ** 2;
+    
+    return new ComplexNumber(rNum / den, iNum / den);
   }
 
   toString(parentheses = false) {

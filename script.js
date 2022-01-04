@@ -1,9 +1,27 @@
 function calculate() {
-    let leftStr = document.getElementById('operand_left').value;
-    let rightStr = document.getElementById('operand_right').value;
+    const leftStr = document.getElementById('operand_left').value;
+    const rightStr = document.getElementById('operand_right').value;
+    const operator = document.getElementById('operator').value;
 
-    let left = ComplexNumber.fromString(leftStr);
-    let right = ComplexNumber.fromString(rightStr);
+    const left = ComplexNumber.fromString(leftStr);
+    const right = ComplexNumber.fromString(rightStr);
 
-    document.getElementById('result').innerText = left.add(right).toString();
+    let result;
+
+    switch (operator) {
+        case "add":
+            result = left.add(right);
+        break;
+        case "subtract":
+            result = left.subtract(right);
+        break;
+        case "multiply":
+            result = left.multiply(right);
+        break;
+        case "divide":
+            result = left.divide(right);
+        break;
+    }
+
+    document.getElementById('result').innerText = result.toString();
 }
