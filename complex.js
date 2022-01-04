@@ -18,14 +18,14 @@ class ComplexNumber {
     let r = 0;
     let i = 0;
 
-    if(single) {
-      if(str.includes('i')) {
-        if(str == 'i' || str == '-i') i = str.replace('i', '1');
+    if (single) {
+      if (str.includes('i')) {
+        if (str == 'i' || str == '-i') i = str.replace('i', '1');
         else i = str.replace('i', '');
       }
       else r = str;
     } 
-    else if(complex || complexSwap) {
+    else if (complex || complexSwap) {
       let parts = [];
       let minus = str.substring(1).indexOf('-') + 1;
       let plus = str.indexOf('+');
@@ -38,7 +38,7 @@ class ComplexNumber {
 
       console.log(parts);
 
-      if(/^[+-]?i$/.test(i)) i = i.replace('i', '1');
+      if (/^[+-]?i$/.test(i)) i = i.replace('i', '1');
     }
 
     return new ComplexNumber(parseFloat(r), parseFloat(i));
@@ -61,21 +61,21 @@ class ComplexNumber {
 
     let result = '';
 
-    if(r != 0 || i == 0) {
-      result += r;
+    if (r != 0 || i == 0) {
+      result += Math.round(r * 1000) / 1000;
     } else {
-      result += i + 'i';
+      result += Math.round(i * 1000) / 1000 + 'i';
     }
 
-    if(i != 0 && r != 0) {
+    if (i != 0 && r != 0) {
       result += i > 0 ? ' + ' : ' - ';
-      if(i != 1 && i != -1) {
-        result += Math.abs(i);
+      if (i != 1 && i != -1) {
+        result += Math.round(Math.abs(i) * 1000) / 1000;
       }
       result += 'i';
     }
 
-    if(parentheses) return '(' + result + ')';
+    if (parentheses) return '(' + result + ')';
 
     return result;
   }
