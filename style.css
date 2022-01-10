@@ -5,12 +5,22 @@ body {
 
   background-color: #111111;
   color: white;
+  font-family: sans-serif;
 }
 
+main {
+  display: flex;
+}
+
+.operand_wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
 input, select {
   background-color: black;
   color: white;
   border: none;
   font-size: 24px;
+  height: 1.25em;
 }

@@ -4,21 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Kalkulator liczb zespolonych</title>
+  <title>Kalkulator</title>
   <link rel="stylesheet" href="style.css">
   <script src="complex.js" charset="utf-8"></script>
   <script src="script.js" charset="utf-8"></script>
 </head>
-<body>
+<body onload="calculate()">
   <main>
-    (<input type="text" name="operand_left" id="operand_left" value="0" oninput="calculate()"></input>)
+    <div class="operand_wrapper">
+      <span>(<input type="text" name="operand_left" id="operand_left" value="0" oninput="calculate()"></input>)</span>
+      <span id="error_left"></span>
+    </div>
     <select name="operator" id="operator" onchange="calculate()">
       <option value="add">+</option>
       <option value="subtract">-</option>
       <option value="multiply">*</option>
       <option value="divide">/</option>
     </select>
-    (<input type="text" name="operand_right" id="operand_right" value="0" oninput="calculate()"></input>)
+    <div class="operand_wrapper">
+      <span>(<input type="text" name="operand_right" id="operand_right" value="0" oninput="calculate()"></input>)</span>
+      <span id="error_right"></span>
+    </div>
     &nbsp;=&nbsp;
     <span id="result">0</span>
   </main>
