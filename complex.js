@@ -5,9 +5,9 @@ class ComplexNumber {
   }
 
   static fromString(str) {
-    const regexSingle = /^\-?(\d+((\.\d+)?i?)|i)$/                    // Tests for a number, optionally proceded by an 'i'
-    const regexComplex = /^\-?\d+(\.\d+)?[+-](\d+(\.\d+)?)?i$/        // Tests for a complex number with the real part first
-    const regexComplexSwap = /^\-?(\d+(\.\d+)?)?i[+-]\d+(\.\d+)?$/    // Tests for a complex number with the imaginary part first
+    const regexSingle = /^\-?(\d+((\.\d+)?i?)|i)$/;                    // Tests for a number, optionally proceded by an 'i'
+    const regexComplex = /^\-?\d+(\.\d+)?[+-](\d+(\.\d+)?)?i$/;        // Tests for a complex number with the real part first
+    const regexComplexSwap = /^\-?(\d+(\.\d+)?)?i[+-]\d+(\.\d+)?$/;    // Tests for a complex number with the imaginary part first
 
     str = str.replaceAll(' ', '');
 
@@ -39,6 +39,8 @@ class ComplexNumber {
       console.log(parts);
 
       if (/^[+-]?i$/.test(i)) i = i.replace('i', '1');
+    } else {
+      throw 'InvalidString';
     }
 
     return new ComplexNumber(parseFloat(r), parseFloat(i));
@@ -90,5 +92,14 @@ class ComplexNumber {
     if (parentheses) return '(' + result + ')';
 
     return result;
+  }
+  
+  equal(operand) {
+    if(operand instanceof ComplexNumber) {
+      return this.real == operand.real && this.imaginary == operand.imaginary;
+    }
+    else {
+      return this.real == operand && this.imaginary == 0;
+    }
   }
 }
